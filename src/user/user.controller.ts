@@ -1,5 +1,4 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
-import { Request } from 'express';
+import { Controller, Get } from '@nestjs/common';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -9,10 +8,4 @@ export class UserController {
   getUser() {
     return this.userService.getUser();
   }
-
-  //   @Post()
-  //   postUser(@Req() req: Request) {
-  //     console.log(req.body);
-  //     return req.body;
-  //   }
 }
