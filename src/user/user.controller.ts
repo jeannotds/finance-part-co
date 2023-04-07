@@ -18,4 +18,9 @@ export class UserController {
   deleteUser(@Param() param: { id: number }) {
     return this.userService.delete(param);
   }
+
+  @Get('/:id')
+  getUser(@Param() param: { id: number }) {
+    return this.userService.getOne(param);
+  }
 }

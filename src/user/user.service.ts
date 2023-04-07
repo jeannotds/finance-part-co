@@ -14,6 +14,10 @@ export class UserService {
     return this.userRepository.find();
   }
 
+  getOne(param: { id: number }) {
+    return this.userRepository.findOne({ where: param });
+  }
+
   create(body: any) {
     return this.userRepository.save(body);
   }
