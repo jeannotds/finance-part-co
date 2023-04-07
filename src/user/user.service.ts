@@ -17,4 +17,8 @@ export class UserService {
   create(body: any) {
     return this.userRepository.save(body);
   }
+
+  delete(param: { id: number }) {
+    return this.userRepository.delete(param);
+  }
 }
