@@ -18,5 +18,8 @@ export class User {
   adress: string;
 
   @Column()
+  email: string;
+
+  @Column()
   image: string;
 }
