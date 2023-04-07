@@ -10,10 +10,7 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
-  getUser(): Promise<User[]> {
+  get(): Promise<User[]> {
     return this.userRepository.find();
   }
-  //   postUser() {
-  //     return { name: 'Jack', prenom: 'Bemba' };
-  //   }
 }
