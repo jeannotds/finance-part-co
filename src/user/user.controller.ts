@@ -10,9 +10,9 @@ export class UserController {
     return this.userService.getUser();
   }
 
-  @Post()
-  postUser(@Req() req: Request) {
-    console.log(req.body);
-    return req.body;
-  }
+  //   @Post()
+  //   postUser(@Req() req: Request) {
+  //     console.log(req.body);
+  //     return req.body;
+  //   }
 }
