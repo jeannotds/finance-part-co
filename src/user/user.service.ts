@@ -13,4 +13,8 @@ export class UserService {
   get(): Promise<User[]> {
     return this.userRepository.find();
   }
+
+  create(body: any) {
+    return this.userRepository.save(body);
+  }
 }
