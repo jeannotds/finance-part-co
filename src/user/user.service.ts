@@ -25,4 +25,8 @@ export class UserService {
   delete(param: { id: number }) {
     return this.userRepository.delete(param);
   }
+
+  update(body: any, param: { id: number }) {
+    return this.userRepository.update(param, body);
+  }
 }
