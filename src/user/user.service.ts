@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateCatDto } from './dto/create-cat.dto';
 import { User } from './entity/user.entity';
 
 @Injectable()
@@ -18,15 +19,15 @@ export class UserService {
     return this.userRepository.findOne({ where: param });
   }
 
-  create(body: any) {
-    return this.userRepository.save(body);
+  create(createCatDto: CreateCatDto) {
+    return this.userRepository.save(createCatDto);
   }
 
   delete(param: { id: number }) {
     return this.userRepository.delete(param);
   }
 
-  update(body: any, param: { id: number }) {
-    return this.userRepository.update(param, body);
+  update(createCatDto: CreateCatDto, param: { id: number }) {
+    return this.userRepository.update(param, createCatDto);
   }
 }
