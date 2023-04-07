@@ -21,5 +21,8 @@ export class User {
   email: string;
 
   @Column()
+  contact: number;
+
+  @Column()
   image: string;
 }
