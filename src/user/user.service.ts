@@ -30,4 +30,9 @@ export class UserService {
   update(createCatDto: CreateCatDto, param: { id: number }) {
     return this.userRepository.update(param, createCatDto);
   }
+
+  //Find User By Email
+  findByEmail(email: string) {
+    return this.userRepository.findOne({ where: { email } });
+  }
 }
