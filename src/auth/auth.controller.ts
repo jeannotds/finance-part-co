@@ -7,12 +7,18 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() loginDto: any) {
-    const user = await this.userService.findByEmail(loginDto.email);
-    if (user) {
-      if (user.password === loginDto.password) {
-        return user;
+    if (loginDto.password == '') {
+      return { message: "Password can't be empty!" };
+    } else if (loginDto.email == '') {
+      return { message: "Email can't be empty!" };
+    } else {
+      const user = await this.userService.findByEmail(loginDto.email);
+      if (user) {
+        if (user.password === loginDto.password) {
+          return user;
+        }
       }
+      return { message: 'unauthenfication' };
     }
-    return { message: 'unauthenfication' };
   }
 }
