@@ -20,7 +20,22 @@ export class UserController {
 
   @Post()
   postUser(@Body() createCatDto: CreateCatDto) {
-    return this.userService.create(createCatDto);
+    if (createCatDto.name == '') return { message: " Name can't be empty!" };
+    else if (createCatDto.lastname == '')
+      return { message: " Lastname can't be empty!" };
+    else if (createCatDto.firstname == '')
+      return { message: " Firstname can't be empty!" };
+    else if (createCatDto.adress == '')
+      return { message: " Adress can't be empty!" };
+    else if (createCatDto.password == '')
+      return { message: " Password can't be empty!" };
+    else if (createCatDto.email == '')
+      return { message: "Email can't be empty!" };
+    else if (!createCatDto.contact == null)
+      return { message: "Contact can't be empty!" };
+    else if (createCatDto.image == '')
+      return { message: "Image can't be empty!" };
+    else return this.userService.create(createCatDto);
   }
 
   @Delete('/:id')
@@ -38,6 +53,21 @@ export class UserController {
     @Body() createCatDto: CreateCatDto,
     @Param() param: { id: number },
   ) {
-    return this.userService.update(createCatDto, param);
+    if (createCatDto.name == '') return { message: " Name can't be empty!" };
+    else if (createCatDto.lastname == '')
+      return { message: " Lastname can't be empty!" };
+    else if (createCatDto.firstname == '')
+      return { message: " Firstname can't be empty!" };
+    else if (createCatDto.adress == '')
+      return { message: " Adress can't be empty!" };
+    else if (createCatDto.password == '')
+      return { message: " Password can't be empty!" };
+    else if (createCatDto.email == '')
+      return { message: "Email can't be empty!" };
+    else if (!createCatDto.contact == null)
+      return { message: "Contact can't be empty!" };
+    else if (createCatDto.image == '')
+      return { message: "Image can't be empty!" };
+    else return this.userService.update(createCatDto, param);
   }
 }
