@@ -11,7 +11,7 @@ export class CreateCatDto {
   adress: string;
   @IsString()
   password: string;
-  @IsNumber()
+  @IsString()
   email: string;
   @IsNumber()
   contact: number;
