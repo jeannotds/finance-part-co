@@ -9,7 +9,9 @@ export class CreateCatDto {
   lastname: string;
   @IsString()
   adress: string;
-  @IsEmail()
+  @IsString()
+  password: string;
+  @IsNumber()
   email: string;
   @IsNumber()
   contact: number;
