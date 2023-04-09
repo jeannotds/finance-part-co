@@ -6,7 +6,13 @@ export class AuthController {
   constructor(private userService: UserService) {}
 
   @Post('login')
-  login(@Body() loginDto: any) {
-    return this.userService.findByEmail(loginDto.email);
+  async login(@Body() loginDto: any) {
+    const user = await this.userService.findByEmail(loginDto.email);
+    if (user) {
+      if (user.password === loginDto.password) {
+        return user;
+      }
+    }
+    return { message: 'unauthenfication' };
   }
 }
