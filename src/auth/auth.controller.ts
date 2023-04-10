@@ -17,6 +17,7 @@ export class AuthController {
         if (user.password === loginDto.password) {
           return user;
         }
+        return { message: 'Password incorrect' };
       }
       return { message: 'unauthenfication' };
     }
