@@ -11,13 +11,10 @@ export class AuthService {
       return { message: "Email can't be empty!" };
     } else {
       const user = await this.userService.findByEmail(email);
-      if (user) {
-        if (user.password === password) {
-          return user;
-        }
-        return { message: 'Password incorrect' };
+      if (user && user.password === password) {
+        return user;
       }
-      return { message: 'unauthenfication' };
+      return null;
     }
   }
 }
