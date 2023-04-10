@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { JwtService } from '@nestjs/jwt';
+import comparePasswords from 'src/utils/bcript';
 
 @Injectable()
 export class AuthService {
@@ -15,8 +16,15 @@ export class AuthService {
       return { message: "Email can't be empty!" };
     } else {
       const user = await this.userService.findByEmail(email);
-      if (user && user.password === password) {
-        return user;
+      if (!password) {
+        return null;
+      }
+      const match = comparePasswords(password, user.password);
+      if (match) {
+        if (user) {
+          return user;
+        }
+        return null;
       }
       return null;
     }
