@@ -10,7 +10,6 @@ import {
 import { encodePassword } from 'src/utils/bcript';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UserService } from './user.service';
-import * as bcrypt from 'bcrypt';
 
 @Controller('user')
 export class UserController {
@@ -72,10 +71,6 @@ export class UserController {
       return { message: "Contact can't be empty!" };
     else if (createCatDto.image == '')
       return { message: "Image can't be empty!" };
-    else {
-      const salt = bcrypt.genSaltSync();
-      const password = bcrypt.hashSync(createCatDto.password, salt);
-      return this.userService.update({ ...createCatDto, password }, param);
-    }
+    else return this.userService.update({ ...createCatDto, password }, param);
   }
 }
