@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -7,24 +7,10 @@ export class AuthController {
   constructor(private authService: AuthService) {}
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Body() loginDto: any) {
-    return this.authService.validateUser(loginDto.email, loginDto.password);
+  //   async login(@Body() loginDto: any) {
+  //     return this.authService.validateUser(loginDto.email, loginDto.password);
+  //   }
+  async login(@Request() req: any) {
+    return this.authService.login(req.user);
   }
 }
-
-/*
-    if (loginDto.password == '') {
-      return { message: "Password can't be empty!" };
-    } else if (loginDto.email == '') {
-      return { message: "Email can't be empty!" };
-    } else {
-      const user = await this.userService.findByEmail(loginDto.email);
-      if (user) {
-        if (user.password === loginDto.password) {
-          return user;
-        }
-        return { message: 'Password incorrect' };
-      }
-      return { message: 'unauthenfication' };
-    }
-    */
