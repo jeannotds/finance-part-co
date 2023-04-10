@@ -5,6 +5,7 @@ import { User } from './user/entity/user.entity';
 import { ProjectModule } from './project/project.module';
 import { Project } from './project/entity/project.entity';
 import { AuthModule } from './auth/auth.module';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthModule } from './auth/auth.module';
     }),
     ProjectModule,
     AuthModule,
+    ProfileModule,
   ],
 })
 export class AppModule {}
