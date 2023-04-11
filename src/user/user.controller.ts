@@ -20,7 +20,7 @@ export class UserController {
   }
 
   @Post()
-  postUser(@Body() createCatDto: CreateCatDto) {
+  async postUser(@Body() createCatDto: CreateCatDto) {
     const password = encodePassword(createCatDto.password);
     if (createCatDto.name == '') return { message: " Name can't be empty!" };
     else if (createCatDto.lastname == '')
@@ -37,7 +37,19 @@ export class UserController {
       return { message: "Contact can't be empty!" };
     else if (createCatDto.image == '')
       return { message: "Image can't be empty!" };
-    else return this.userService.create({ ...createCatDto, password });
+    else {
+      const findUserById = await this.userService.findByEmail(
+        createCatDto.email,
+      );
+      const findUserContact = await this.userService.findByContact(
+        createCatDto.contact,
+      );
+      if (!findUserById && !findUserContact) {
+        console.log('findUserById : ', findUserById);
+        return this.userService.create({ ...createCatDto, password });
+      }
+      return { message: 'This user is allready exist' };
+    }
   }
 
   @Delete('/:id')

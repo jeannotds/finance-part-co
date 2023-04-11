@@ -36,4 +36,8 @@ export class UserService {
   findByEmail(email: string) {
     return this.userRepository.findOne({ where: { email } });
   }
+
+  findByContact(contact: number) {
+    return this.userRepository.findOne({ where: { contact } });
+  }
 }
