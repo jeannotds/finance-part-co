@@ -9,7 +9,7 @@ export class ProjectService {
     @InjectRepository(Project)
     private projectRepository: Repository<Project>,
   ) {}
-  getProject() {
-    return 'Saluts';
+  getProject(data: any) {
+    return { data };
   }
 }

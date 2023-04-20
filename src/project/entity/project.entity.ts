@@ -13,4 +13,10 @@ export class Project {
 
   @Column()
   description: string;
+
+  @Column()
+  residence: string;
+
+  @Column()
+  telephone: number;
 }
