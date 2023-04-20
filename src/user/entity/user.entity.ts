@@ -11,21 +11,9 @@ export class User {
   @Column()
   firstname: string;
 
-  @Column()
-  lastname: string;
-
-  @Column()
-  adress: string;
-
-  @Column()
-  password: string;
-
   @Column({ unique: true })
   email: string;
 
-  @Column({ unique: true })
-  contact: number;
-
   @Column()
-  image: string;
+  password: string;
 }
