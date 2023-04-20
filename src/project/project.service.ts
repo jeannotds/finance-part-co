@@ -9,7 +9,8 @@ export class ProjectService {
     @InjectRepository(Project)
     private projectRepository: Repository<Project>,
   ) {}
-  getProject(data: any) {
-    return { data };
+
+  getProject(): Promise<Project[]> {
+    return this.projectRepository.find();
   }
 }
