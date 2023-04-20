@@ -27,14 +27,13 @@ export class UserController {
       return { message: " Firstname can't be empty!" };
     else if (createCatDto.password == '')
       return { message: " Password can't be empty!" };
-    else if (createCatDto.email == '')
-      return { message: "Contact can't be empty!" };
+    else if (!createCatDto.email) return { message: "Email can't be empty!" };
     else {
       const findUserById = await this.userService.findByEmail(
         createCatDto.email,
       );
+      console.log('findUserById : ', findUserById);
       if (!findUserById) {
-        console.log('findUserById : ', findUserById);
         return this.userService.create({ ...createCatDto, password });
       }
       return { message: 'This user is allready exist' };
