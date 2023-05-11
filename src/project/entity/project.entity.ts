@@ -1,12 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/user/entity/user.entity';
 
 @Entity()
 export class Project {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  user: number;
 
   @Column()
   name: string;
@@ -19,4 +17,7 @@ export class Project {
 
   @Column()
   telephone: number;
+
+  @ManyToOne(() => User, (user) => user.projets)
+  user: User;
 }

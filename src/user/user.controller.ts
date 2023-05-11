@@ -21,6 +21,7 @@ export class UserController {
 
   @Post()
   async postUser(@Body() createCatDto: CreateCatDto) {
+    console.log('email : ', createCatDto.email);
     const password = encodePassword(createCatDto.password);
     if (createCatDto.name == '') return { message: " Name can't be empty!" };
     else if (createCatDto.firstname == '')
