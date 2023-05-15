@@ -13,7 +13,6 @@ export class ProjectController {
 
   @Post()
   postProject(@Body() createProjectDto: CreateProjectDto) {
-    if (!createProjectDto.user) return { message: 'user is a required' };
     if (!createProjectDto.name) return { message: "Project can't be empty!" };
     if (!createProjectDto.description)
       return { message: "Description can't be empty!" };

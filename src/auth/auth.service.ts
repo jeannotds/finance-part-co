@@ -16,10 +16,12 @@ export class AuthService {
       return { message: "Email can't be empty!" };
     } else {
       const user = await this.userService.findByEmail(email);
+      console.log('user : ', user);
       if (!password) {
         return null;
       }
       const match = comparePasswords(password, user.password);
+      console.log('match : ', match);
       if (match) {
         if (user) {
           return user;

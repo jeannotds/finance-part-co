@@ -1,9 +1,6 @@
 import { IsNumber, IsString } from 'class-validator';
 
 export class CreateProjectDto {
-  @IsNumber()
-  user: number;
-
   @IsString()
   name: string;
 
