@@ -12,6 +12,7 @@ import { TypeuserModule } from './typeuser/typeuser.module';
   imports: [
     UserModule,
     TypeOrmModule.forRoot({
+      /*
       type: 'mysql',
       host: 'localhost',
       port: 3306,
@@ -19,6 +20,15 @@ import { TypeuserModule } from './typeuser/typeuser.module';
       password: '',
       database: 'finance_part',
       entities: [User, Project],
+      synchronize: true,
+      */
+      entities: [User, Project],
+      type: 'mysql',
+      host: 'sql12.freesqldatabase.com',
+      database: 'sql12621233',
+      username: 'sql12621233',
+      password: 'TjeRxdBmhx',
+      port: 3306,
       synchronize: true,
     }),
     ProjectModule,
