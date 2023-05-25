@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Project } from 'src/project/entity/project.entity';
 
 @Entity()
 export class User {
@@ -11,21 +12,12 @@ export class User {
   @Column()
   firstname: string;
 
-  @Column()
-  lastname: string;
-
-  @Column()
-  adress: string;
+  @Column({ unique: true })
+  email: string;
 
   @Column()
   password: string;
 
-  @Column({ unique: true })
-  email: string;
-
-  @Column({ unique: true })
-  contact: number;
-
-  @Column()
-  image: string;
+  @OneToMany(() => Project, (project) => project.user)
+  projets: Project[];
 }

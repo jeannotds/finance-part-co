@@ -21,31 +21,20 @@ export class UserController {
 
   @Post()
   async postUser(@Body() createCatDto: CreateCatDto) {
+    console.log('email : ', createCatDto.email);
     const password = encodePassword(createCatDto.password);
     if (createCatDto.name == '') return { message: " Name can't be empty!" };
-    else if (createCatDto.lastname == '')
-      return { message: " Lastname can't be empty!" };
     else if (createCatDto.firstname == '')
       return { message: " Firstname can't be empty!" };
-    else if (createCatDto.adress == '')
-      return { message: " Adress can't be empty!" };
     else if (createCatDto.password == '')
       return { message: " Password can't be empty!" };
-    else if (createCatDto.email == '')
-      return { message: "Email can't be empty!" };
-    else if (!createCatDto.contact == null)
-      return { message: "Contact can't be empty!" };
-    else if (createCatDto.image == '')
-      return { message: "Image can't be empty!" };
+    else if (!createCatDto.email) return { message: "Email can't be empty!" };
     else {
       const findUserById = await this.userService.findByEmail(
         createCatDto.email,
       );
-      const findUserContact = await this.userService.findByContact(
-        createCatDto.contact,
-      );
-      if (!findUserById && !findUserContact) {
-        console.log('findUserById : ', findUserById);
+      console.log('findUserById : ', findUserById);
+      if (!findUserById) {
         return this.userService.create({ ...createCatDto, password });
       }
       return { message: 'This user is allready exist' };
@@ -69,20 +58,12 @@ export class UserController {
   ) {
     const password = encodePassword(createCatDto.password);
     if (createCatDto.name == '') return { message: " Name can't be empty!" };
-    else if (createCatDto.lastname == '')
-      return { message: " Lastname can't be empty!" };
     else if (createCatDto.firstname == '')
       return { message: " Firstname can't be empty!" };
-    else if (createCatDto.adress == '')
-      return { message: " Adress can't be empty!" };
     else if (createCatDto.password == '')
       return { message: " Password can't be empty!" };
     else if (createCatDto.email == '')
       return { message: "Email can't be empty!" };
-    else if (!createCatDto.contact == null)
-      return { message: "Contact can't be empty!" };
-    else if (createCatDto.image == '')
-      return { message: "Image can't be empty!" };
     else return this.userService.update({ ...createCatDto, password }, param);
   }
 }

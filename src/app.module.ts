@@ -6,6 +6,7 @@ import { ProjectModule } from './project/project.module';
 import { Project } from './project/entity/project.entity';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
+import { TypeuserModule } from './typeuser/typeuser.module';
 
 @Module({
   imports: [
@@ -15,7 +16,7 @@ import { ProfileModule } from './profile/profile.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'jeannot',
+      password: '',
       database: 'finance_part',
       entities: [User, Project],
       synchronize: true,
@@ -23,6 +24,7 @@ import { ProfileModule } from './profile/profile.module';
     ProjectModule,
     AuthModule,
     ProfileModule,
+    TypeuserModule,
   ],
 })
 export class AppModule {}
