@@ -31,13 +31,7 @@ export class UserService {
     return this.userRepository.update(param, createCatDto);
   }
 
-  //Find User By Email
-  //findOne
   findByEmail(email: string) {
     return this.userRepository.findOne({ where: { email } });
-  }
-
-  findByContact(contact: number) {
-    return this.userRepository.findOne({ where: { contact } });
   }
 }
